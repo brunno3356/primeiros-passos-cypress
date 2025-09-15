@@ -21,4 +21,6 @@ npx Cypress open
 npx Cypress run 
 ```
 
- 
+ Veja o código completo no meu GitHub:  
+[GitHub - Projeto Cypress](https://lnkd.in/dxdkuJ-Q)
+

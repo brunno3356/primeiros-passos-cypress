@@ -1,37 +1,39 @@
-name: CI
+ame: Cypress Tests
 
 on:
-  push:
-  workflow_dispatch:
+    push:
+        branches: [main, master]
+        paths-ignore:
+          - 'README.md' # Ignora commits que alteram apenas o README
+    
+    #pull_request:
+        #branches: [main, master]
+        #paths-ignore:
+          #- 'README.md'        # Ignora commits que alteram apenas o README
 
+    workflow_dispatch:
 jobs:
-  cypress-tests:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+    cypress-testes:
+        timeout-minutes: 120
+        runs-on: ubuntu-latest
+        strategy:
+          matrix:
+            browser: [chrome]  # define os navegadores   
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: lts/*
+            - name: Install dependencies
+              run: npm ci
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
+            - name: Verify Cypress installation
+              run: npx cypress verify
 
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run Cypress tests
-        uses: cypress-io/github-action@v6
-        with:
-          build: false   # 👈 não tenta rodar npm run build
-          command: npx cypress run  # 👈 executa os testes direto
-
-      - name: Upload Cypress Results
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: Cypress Results
-          path: |
-            cypress/screenshots
-            cypress/videos
-            cypress/results
-          if-no-files-found: ignore
+            - name: Run Cypress tests
+              uses: cypress-io/github-action@v5
+              with:
+                  browser: ${{ matrix.browser }}              
+                  record: true                 # envia resultados para o Cypress Dashboard
+                  parallel: true              # ajuste se quiser rodar paralelo
+                  group: "GitHub Actions - ${{ matrix.browser }}"  # nome do grupo no Dashboard

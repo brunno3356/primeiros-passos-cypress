@@ -31,7 +31,7 @@ class MyInfoPage {
         cy.get(this.selectorsList().genericField).eq(4).clear().type(otherid)
         cy.get(this.selectorsList().genericField).eq(5).clear().type(driveLicenseDate)
         cy.get(this.selectorsList().genericField).eq(6).clear().type(expiryDate)
-        cy.get(this.selectorsList().dateCloseButton).click()
+        
    }
 
    saveForm() {

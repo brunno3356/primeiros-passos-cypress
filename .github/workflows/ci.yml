@@ -34,6 +34,6 @@ jobs:
               uses: cypress-io/github-action@v5
               with:
                   browser: ${{ matrix.browser }}              
-                  record: true                 # envia resultados para o Cypress Dashboard
-                  parallel: true              # ajuste se quiser rodar paralelo
-                  group: "GitHub Actions - ${{ matrix.browser }}"  # nome do grupo no Dashboard
+                  #record: true                 # envia resultados para o Cypress Dashboard
+                  #parallel: true              # ajuste se quiser rodar paralelo
+                  #group: "GitHub Actions - ${{ matrix.browser }}"  # nome do grupo no Dashboard

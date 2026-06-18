@@ -1,13 +1,23 @@
 {
   "name": "primeiros-passos-cypress",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
+  "description": "Suíte completa de testes automatizados E2E para o Orange HRM com Cypress — Login, PIM, Leave, Recruitment, Dashboard, Performance e Testes de Carga.",
+  "author": "brunno3356",
   "license": "ISC",
-  "description": "",
+  "scripts": {
+    "test": "npx cypress run",
+    "test:headless": "npx cypress run --headless",
+    "test:login": "npx cypress run --spec 'cypress/e2e/login.spec.cy.js'",
+    "test:pim": "npx cypress run --spec 'cypress/e2e/pim.spec.cy.js'",
+    "test:leave": "npx cypress run --spec 'cypress/e2e/leave.spec.cy.js'",
+    "test:recruitment": "npx cypress run --spec 'cypress/e2e/recruitment.spec.cy.js'",
+    "test:dashboard": "npx cypress run --spec 'cypress/e2e/dashboard.spec.cy.js'",
+    "test:performance": "npx cypress run --spec 'cypress/e2e/performance.spec.cy.js'",
+    "test:myinfo": "npx cypress run --spec 'cypress/e2e/user.spec.cy.js'",
+    "test:load": "npx cypress run --spec 'cypress/e2e/load.spec.cy.js'",
+    "cypress:open": "npx cypress open"
+  },
   "devDependencies": {
     "cypress": "^15.0.0"
   },
